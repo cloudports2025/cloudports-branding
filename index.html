@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudPorts — Branding System</title>
+    <link rel="stylesheet" href="https://use.typekit.net/hun7ekl.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-light: #ffffff;
+            --bg-dark: #000000;
+            --text-light: #000000;
+            --text-dark: #ffffff;
+            --accent: #1a1a1a;
+            --border: #e0e0e0;
+            --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        [data-theme="dark"] {
+            --bg-light: #0a0a0a;
+            --bg-dark: #ffffff;
+            --text-light: #ffffff;
+            --text-dark: #000000;
+            --accent: #f5f5f5;
+            --border: #2a2a2a;
+        }
+
+        body {
+            font-family: "degular-text", sans-serif;
+            background: var(--bg-light);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: var(--transition);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: "degular-display", sans-serif;
+            font-weight: 700;
+        }
+
+        .logo-nav {
+            font-family: "degular", sans-serif;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        [data-theme="dark"] nav {
+            background: rgba(10, 10, 10, 0.98);
+        }
+
+        .logo-nav {
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-controls {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        button {
+            background: none;
+            border: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            color: var(--text-light);
+        }
+
+        button:hover {
+            background: var(--accent);
+            color: var(--text-dark);
+        }
+
+        /* Main Container */
+        .container {
+            padding-top: 120px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem 2rem;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            animation-delay: 0.2s;
+        }
+
+        .hero h1 {
+            font-family: "degular-display", sans-serif;
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            opacity: 0.7;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            font-weight: 300;
+        }
+
+        /* Logo Master */
+        .logo-section {
+            animation-delay: 0.4s;
+        }
+
+        .section-title {
+            font-family: "degular-display", sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            letter-spacing: -0.02em;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .logo-display {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem;
+            background: var(--accent);
+            border: 1px solid var(--border);
+            min-height: 300px;
+            transition: var(--transition);
+        }
+
+        .logo-box:hover {
+            transform: scale(1.02);
+        }
+
+        .logo-box svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .logo-variants {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .variant-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--accent);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .variant-item:hover {
+            transform: translateY(-4px);
+        }
+
+        .variant-item label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 1rem;
+            letter-spacing: 0.05em;
+            opacity: 0.7;
+        }
+
+        /* Mockups */
+        .mockups-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            animation-delay: 0.6s;
+        }
+
+        .mockup-card {
+            background: var(--accent);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .mockup-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .mockup-preview {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 180px;
+            position: relative;
+        }
+
+        .mockup-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .mockup-desc {
+            font-size: 0.85rem;
+            opacity: 0.6;
+            margin-bottom: 1rem;
+        }
+
+        /* Colors */
+        .colors-section {
+            animation-delay: 0.8s;
+        }
+
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .color-box {
+            aspect-ratio: 1;
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .color-box:hover {
+            transform: scale(1.05);
+        }
+
+        .color-box.black {
+            background: #000000;
+            color: #ffffff;
+        }
+
+        .color-box.white {
+            background: #ffffff;
+            color: #000000;
+            border: 2px solid #000000;
+        }
+
+        .color-box.gray-light {
+            background: #f5f5f5;
+            color: #000000;
+            border: 2px solid #000000;
+        }
+
+        .color-box.gray-dark {
+            background: #2a2a2a;
+            color: #ffffff;
+        }
+
+        /* Typography */
+        .typography-showcase {
+            display: grid;
+            gap: 2rem;
+            animation-delay: 1s;
+        }
+
+        .type-sample {
+            padding: 2rem;
+            background: var(--accent);
+            border: 1px solid var(--border);
+        }
+
+        .type-sample h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .type-sample p {
+            font-size: 1rem;
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+
+        /* Business Card */
+        .business-card-section {
+            animation-delay: 1.2s;
+        }
+
+        .card-3d {
+            perspective: 1000px;
+            margin: 2rem 0;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 500px;
+            aspect-ratio: 1.75;
+            background: #000000;
+            color: #ffffff;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transform-style: preserve-3d;
+            transition: transform 0.6s ease;
+            border: 1px solid var(--border);
+        }
+
+        .card:hover {
+            transform: rotateY(5deg) rotateX(-2deg);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .card-logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .card-details {
+            margin-top: auto;
+        }
+
+        .card-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-info {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .logo-variants {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                min-height: auto;
+                padding: 2rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: clamp(2rem, 6vw, 3rem);
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Scroll animations */
+        .scroll-animation {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+        }
+
+        .scroll-animation.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo-nav">CloudPorts</div>
+        <div class="nav-controls">
+            <button onclick="scrollToSection('hero')">Presentation</button>
+            <button onclick="scrollToSection('logos')">Logos</button>
+            <button onclick="scrollToSection('mockups')">Mockups</button>
+            <button onclick="toggleTheme()">Theme</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <h1>CloudPorts</h1>
+            <p>Modern Brand Identity System</p>
+            <p style="font-size: 1rem; margin-top: 2rem; opacity: 0.5;">A sophisticated monochrome branding platform designed for contemporary logistics innovation</p>
+        </section>
+
+        <!-- Logo Master Section -->
+        <section class="logo-section" id="logos">
+            <h2 class="section-title">Logo System</h2>
+            
+            <div class="grid-2">
+                <div>
+                    <div class="logo-display">
+                        <div class="logo-box">
+                            <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- CloudPorts Symbol: Port/Gateway with floating connection node -->
+                                <!-- Top horizontal bar (gateway arch) -->
+                                <rect x="60" y="40" width="80" height="12" fill="currentColor" rx="2"/>
+                                <!-- Left vertical connector -->
+                                <rect x="60" y="52" width="12" height="40" fill="currentColor" rx="2"/>
+                                <!-- Right vertical connector -->
+                                <rect x="128" y="52" width="12" height="40" fill="currentColor" rx="2"/>
+                                <!-- Center floating node (hollow - the "port") -->
+                                <circle cx="100" cy="95" r="16" stroke="currentColor" stroke-width="3" fill="none"/>
+                                <!-- Bottom left flow channel -->
+                                <rect x="60" y="120" width="20" height="50" fill="currentColor" rx="2"/>
+                                <!-- Bottom center flow channel -->
+                                <rect x="90" y="120" width="20" height="50" fill="currentColor" rx="2"/>
+                                <!-- Bottom right flow channel -->
+                                <rect x="120" y="120" width="20" height="50" fill="currentColor" rx="2"/>
+                            </svg>
+                        </div>
+                        <h3 style="margin-bottom: 1rem;">Primary Logo</h3>
+                        <p style="opacity: 0.6; font-size: 0.95rem;">Symbol mark - scalable and distinctive</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 style="margin-bottom: 2rem; font-size: 1.3rem;">Logo Variants</h3>
+                    <div class="logo-variants">
+                        <div class="variant-item">
+                            <svg width="80" height="80" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="60" y="40" width="80" height="12" fill="currentColor" rx="2"/>
+                                <rect x="60" y="52" width="12" height="40" fill="currentColor" rx="2"/>
+                                <rect x="128" y="52" width="12" height="40" fill="currentColor" rx="2"/>
+                                <circle cx="100" cy="95" r="16" stroke="currentColor" stroke-width="3" fill="none"/>
+                                <rect x="60" y="120" width="20" height="50" fill="currentColor" rx="2"/>
+                                <rect x="90" y="120" width="20" height="50" fill="currentColor" rx="2"/>
+                                <rect x="120" y="120" width="20" height="50" fill="currentColor" rx="2"/>
+                            </svg>
+                            <label>Symbol Only</label>
+                        </div>
+
+                        <div class="variant-item">
+                            <div style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; height: 80px;">
+                                <svg width="40" height="40" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="60" y="40" width="80" height="12" fill="currentColor" rx="2"/>
+                                    <rect x="60" y="52" width="12" height="40" fill="currentColor" rx="2"/>
+                                    <rect x="128" y="52" width="12" height="40" fill="currentColor" rx="2"/>
+                                    <circle cx="100" cy="95" r="16" stroke="currentColor" stroke-width="3" fill="none"/>
+                                    <rect x="60" y="120" width="20" height="50" fill="currentColor" rx="2"/>
+                                    <rect x="90" y="120" width="20" height="50" fill="currentColor" rx="2"/>
+                                    <rect x="120" y="120" width="20" height="50" fill="currentColor" rx="2"/>
+                                </svg>
+                                <span style="font-weight: 700; font-size: 1.1rem;">CloudPorts</span>
+                            </div>
+                            <label>Horizontal</label>
+                        </div>
+
+                        <div class="variant-item">
+                            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 80px; gap: 0.5rem;">
+                                <svg width="40" height="40" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="60" y="40" width="80" height="12" fill="currentColor" rx="2"/>
+                                    <rect x="60" y="52" width="12" height="40" fill="currentColor" rx="2"/>
+                                    <rect x="128" y="52" width="12" height="40" fill="currentColor" rx="2"/>
+                                    <circle cx="100" cy="95" r="16" stroke="currentColor" stroke-width="3" fill="none"/>
+                                    <rect x="60" y="120" width="20" height="50" fill="currentColor" rx="2"/>
+                                    <rect x="90" y="120" width="20" height="50" fill="currentColor" rx="2"/>
+                                    <rect x="120" y="120" width="20" height="50" fill="currentColor" rx="2"/>
+                                </svg>
+                                <span style="font-weight: 700; font-size: 0.9rem;">CloudPorts</span>
+                            </div>
+                            <label>Vertical</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Color Palette -->
+        <section class="colors-section">
+            <h2 class="section-title">Color System</h2>
+            <div class="color-grid">
+                <div class="color-box black">
+                    <span>Black</span>
+                    <span style="font-size: 0.75rem; opacity: 0.8; margin-top: 0.5rem;">#000000</span>
+                </div>
+                <div class="color-box white">
+                    <span>White</span>
+                    <span style="font-size: 0.75rem; opacity: 0.8; margin-top: 0.5rem;">#FFFFFF</span>
+                </div>
+                <div class="color-box gray-dark">
+                    <span>Dark Gray</span>
+                    <span style="font-size: 0.75rem; opacity: 0.8; margin-top: 0.5rem;">#2A2A2A</span>
+                </div>
+                <div class="color-box gray-light">
+                    <span>Light Gray</span>
+                    <span style="font-size: 0.75rem; opacity: 0.8; margin-top: 0.5rem;">#F5F5F5</span>
+                </div>
+            </div>
+            <div style="background: var(--accent); border: 1px solid var(--border); padding: 2rem; margin-top: 2rem;">
+                <p style="opacity: 0.8;"><strong>Monochrome Palette:</strong> A sophisticated black, white, and gray system providing maximum flexibility and timeless appeal. Perfect for modern logistics and technology platforms.</p>
+            </div>
+        </section>
+
+        <!-- Typography -->
+        <section>
+            <h2 class="section-title">Typography</h2>
+            <div class="typography-showcase">
+                <div class="type-sample">
+                    <h2>Headline Large</h2>
+                    <p>48px • Bold • Letter spacing -0.02em</p>
+                </div>
+                <div class="type-sample">
+                    <h3 style="font-size: 1.5rem;">Headline Medium</h3>
+                    <p>32px • Semibold • Letter spacing -0.01em</p>
+                </div>
+                <div class="type-sample">
+                    <p>Body Text: The quick brown fox jumps over the lazy dog. A harmonious system built on precision and clarity, designed for seamless communication across digital and print mediums.</p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.6;">16px • Regular • Line height 1.6</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mockups -->
+        <section id="mockups">
+            <h2 class="section-title">Brand Applications</h2>
+            <div class="mockups-grid">
+                <!-- Favicon -->
+                <div class="mockup-card">
+                    <div class="mockup-preview">
+                        <svg width="64" height="64" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="60" y="40" width="80" height="12" fill="currentColor" rx="2"/>
+                            <rect x="60" y="52" width="12" height="40" fill="currentColor" rx="2"/>
+                            <rect x="128" y="52" width="12" height="40" fill="currentColor" rx="2"/>
+                            <circle cx="100" cy="95" r="16" stroke="currentColor" stroke-width="3" fill="none"/>
+                            <rect x="60" y="120" width="20" height="50" fill="currentColor" rx="2"/>
+                            <rect x="90" y="120" width="20" height="50" fill="currentColor" rx="2"/>
+                            <rect x="120" y="120" width="20" height="50" fill="currentColor" rx="2"/>
+                        </svg>
+                    </div>
+                    <div class="mockup-title">Favicon</div>
+                    <div class="mockup-desc">16x16, 32x32, 64x64px • SVG + PNG</div>
+                </div>
+
+                <!-- App Icon -->
+                <div class="mockup-card">
+                    <div class="mockup-preview">
+                        <div style="width: 120px; height: 120px; background: #000; display: flex; align-items: center; justify-content: center; border-radius: 24px;">
+                            <svg width="80" height="80" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="60" y="40" width="80" height="12" fill="white" rx="2"/>
+                                <rect x="60" y="52" width="12" height="40" fill="white" rx="2"/>
+                                <rect x="128" y="52" width="12" height="40" fill="white" rx="2"/>
+                                <circle cx="100" cy="95" r="16" stroke="white" stroke-width="3" fill="none"/>
+                                <rect x="60" y="120" width="20" height="50" fill="white" rx="2"/>
+                                <rect x="90" y="120" width="20" height="50" fill="white" rx="2"/>
+                                <rect x="120" y="120" width="20" height="50" fill="white" rx="2"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="mockup-title">App Icon</div>
+                    <div class="mockup-desc">iOS & Android • 512x512px</div>
+                </div>
+
+                <!-- Mobile Hero -->
+                <div class="mockup-card">
+                    <div class="mockup-preview">
+                        <div style="width: 90px; height: 180px; background: #000; border-radius: 12px; padding: 1rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem;">
+                            <svg width="36" height="36" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="60" y="40" width="80" height="12" fill="white" rx="2"/>
+                                <rect x="60" y="52" width="12" height="40" fill="white" rx="2"/>
+                                <rect x="128" y="52" width="12" height="40" fill="white" rx="2"/>
+                                <circle cx="100" cy="95" r="16" stroke="white" stroke-width="3" fill="none"/>
+                                <rect x="60" y="120" width="20" height="50" fill="white" rx="2"/>
+                                <rect x="90" y="120" width="20" height="50" fill="white" rx="2"/>
+                                <rect x="120" y="120" width="20" height="50" fill="white" rx="2"/>
+                            </svg>
+                            <div style="font-size: 0.6rem; text-align: center; line-height: 1.2; font-family: 'degular-text', sans-serif; color: white;">CloudPorts</div>
+                        </div>
+                    </div>
+                    <div class="mockup-title">Mobile App</div>
+                    <div class="mockup-desc">iPhone Hero Section</div>
+                </div>
+
+                <!-- Business Card Front -->
+                <div class="mockup-card">
+                    <div class="mockup-preview">
+                        <div style="width: 100%; height: 100%; aspect-ratio: 1.75; background: #000; color: white; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; font-size: 0.7rem; line-height: 1.4;">
+                            <div>CloudPorts</div>
+                            <div>
+                                <div style="font-weight: 700;">Founder</div>
+                                <div style="opacity: 0.8;">team@cloudports.io</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mockup-title">Business Card</div>
+                    <div class="mockup-desc">3.5" × 2" • Front & Back</div>
+                </div>
+
+                <!-- Website Hero -->
+                <div class="mockup-card">
+                    <div class="mockup-preview">
+                        <div style="width: 100%; height: 100%; background: #f5f5f5; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem;">
+                            <svg width="60" height="60" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="60" y="40" width="80" height="12" fill="black" rx="2"/>
+                                <rect x="60" y="52" width="12" height="40" fill="black" rx="2"/>
+                                <rect x="128" y="52" width="12" height="40" fill="black" rx="2"/>
+                                <circle cx="100" cy="95" r="16" stroke="black" stroke-width="3" fill="none"/>
+                                <rect x="60" y="120" width="20" height="50" fill="black" rx="2"/>
+                                <rect x="90" y="120" width="20" height="50" fill="black" rx="2"/>
+                                <rect x="120" y="120" width="20" height="50" fill="black" rx="2"/>
+                            </svg>
+                            <div style="font-family: 'degular-display', sans-serif; font-weight: 700; font-size: 0.85rem;">CloudPorts</div>
+                        </div>
+                    </div>
+                    <div class="mockup-title">Website Hero</div>
+                    <div class="mockup-desc">Desktop • 1920x1080px</div>
+                </div>
+
+                <!-- Dark Background -->
+                <div class="mockup-card">
+                    <div class="mockup-preview" style="background: #000;">
+                        <div style="text-align: center; color: white;">
+                            <svg width="56" height="56" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="60" y="40" width="80" height="12" fill="white" rx="2"/>
+                                <rect x="60" y="52" width="12" height="40" fill="white" rx="2"/>
+                                <rect x="128" y="52" width="12" height="40" fill="white" rx="2"/>
+                                <circle cx="100" cy="95" r="16" stroke="white" stroke-width="3" fill="none"/>
+                                <rect x="60" y="120" width="20" height="50" fill="white" rx="2"/>
+                                <rect x="90" y="120" width="20" height="50" fill="white" rx="2"/>
+                                <rect x="120" y="120" width="20" height="50" fill="white" rx="2"/>
+                            </svg>
+                            <div style="font-family: 'degular', sans-serif; font-size: 0.8rem; font-weight: 600; margin-top: 0.75rem;">CloudPorts</div>
+                        </div>
+                    </div>
+                    <div class="mockup-title">Dark Background</div>
+                    <div class="mockup-desc">Full Contrast • All Surfaces</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Business Card Showcase -->
+        <section class="business-card-section">
+            <h2 class="section-title">Stationery Design</h2>
+            <div class="card-3d">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-logo">
+                            <svg width="24" height="24" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="60" y="40" width="80" height="12" fill="white" rx="2"/>
+                                <rect x="60" y="52" width="12" height="40" fill="white" rx="2"/>
+                                <rect x="128" y="52" width="12" height="40" fill="white" rx="2"/>
+                                <circle cx="100" cy="95" r="16" stroke="white" stroke-width="3" fill="none"/>
+                                <rect x="60" y="120" width="20" height="50" fill="white" rx="2"/>
+                                <rect x="90" y="120" width="20" height="50" fill="white" rx="2"/>
+                                <rect x="120" y="120" width="20" height="50" fill="white" rx="2"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="card-details">
+                        <div class="card-name" style="font-family: 'degular', sans-serif;">CloudPorts</div>
+                        <div class="card-info" style="font-family: 'degular-text', sans-serif;">
+                            3723 Greenville Ave #41074<br/>
+                            Dallas, TX 75206<br/>
+                            team@cloudports.io<br/>
+                            +1 (669) 228-5950
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brand Guidelines -->
+        <section>
+            <h2 class="section-title">Brand Guidelines</h2>
+            <div style="display: grid; gap: 2rem;">
+                <div style="background: var(--accent); border: 1px solid var(--border); padding: 2rem;">
+                    <h3 style="margin-bottom: 1rem; font-size: 1.2rem;">Logo Clearance</h3>
+                    <p>Minimum clear space around the logo should be equal to 1/4 of the logo width. Never place the logo closer to edges or other elements.</p>
+                </div>
+                <div style="background: var(--accent); border: 1px solid var(--border); padding: 2rem;">
+                    <h3 style="margin-bottom: 1rem; font-size: 1.2rem;">Size Requirements</h3>
+                    <p>Minimum size: 32px × 32px (web), 0.25" × 0.25" (print). The symbol remains recognizable at all scales.</p>
+                </div>
+                <div style="background: var(--accent); border: 1px solid var(--border); padding: 2rem;">
+                    <h3 style="margin-bottom: 1rem; font-size: 1.2rem;">Color Usage</h3>
+                    <p>Primary usage: Black on white or light backgrounds. Inverse: White on dark backgrounds. Do not use color variations or gradients.</p>
+                </div>
+                <div style="background: var(--accent); border: 1px solid var(--border); padding: 2rem;">
+                    <h3 style="margin-bottom: 1rem; font-size: 1.2rem;">Typography Pairing</h3>
+                    <p>Pair with modern, geometric sans-serif typefaces. Recommended: San Francisco, Inter, or similar contemporary fonts. Maintain consistent letter-spacing of -0.02em for headlines.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Export Assets -->
+        <section>
+            <h2 class="section-title">Downloadable Assets</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+                <button style="padding: 1.5rem; text-align: center; height: auto; border: 2px solid var(--border); background: var(--accent); transition: var(--transition);" onmouseover="this.style.background='var(--text-light)'; this.style.color='var(--text-dark)'" onmouseout="this.style.background='var(--accent)'; this.style.color='var(--text-light)'">
+                    📥 Logo SVG Master
+                </button>
+                <button style="padding: 1.5rem; text-align: center; height: auto; border: 2px solid var(--border); background: var(--accent); transition: var(--transition);" onmouseover="this.style.background='var(--text-light)'; this.style.color='var(--text-dark)'" onmouseout="this.style.background='var(--accent)'; this.style.color='var(--text-light)'">
+                    📥 App Icons (PNG)
+                </button>
+                <button style="padding: 1.5rem; text-align: center; height: auto; border: 2px solid var(--border); background: var(--accent); transition: var(--transition);" onmouseover="this.style.background='var(--text-light)'; this.style.color='var(--text-dark)'" onmouseout="this.style.background='var(--accent)'; this.style.color='var(--text-light)'">
+                    📥 Favicon ICO
+                </button>
+                <button style="padding: 1.5rem; text-align: center; height: auto; border: 2px solid var(--border); background: var(--accent); transition: var(--transition);" onmouseover="this.style.background='var(--text-light)'; this.style.color='var(--text-dark)'" onmouseout="this.style.background='var(--accent)'; this.style.color='var(--text-light)'">
+                    📥 Business Card PDF
+                </button>
+                <button style="padding: 1.5rem; text-align: center; height: auto; border: 2px solid var(--border); background: var(--accent); transition: var(--transition);" onmouseover="this.style.background='var(--text-light)'; this.style.color='var(--text-dark)'" onmouseout="this.style.background='var(--accent)'; this.style.color='var(--text-light)'">
+                    📥 Brand Guidelines PDF
+                </button>
+                <button style="padding: 1.5rem; text-align: center; height: auto; border: 2px solid var(--border); background: var(--accent); transition: var(--transition);" onmouseover="this.style.background='var(--text-light)'; this.style.color='var(--text-dark)'" onmouseout="this.style.background='var(--accent)'; this.style.color='var(--text-light)'">
+                    📥 All Assets (ZIP)
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>CloudPorts Brand System — 2025 • Design inspired by modern logistics technology</p>
+        <p style="margin-top: 1rem; opacity: 0.5;">cloudports.io</p>
+    </footer>
+
+    <script>
+        // Theme toggle
+        function toggleTheme() {
+            const body = document.body;
+            const isDark = body.getAttribute('data-theme') === 'dark';
+            body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        }
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.body.setAttribute('data-theme', savedTheme);
+
+        // Smooth scroll
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        });
+
+        document.querySelectorAll('.scroll-animation').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
